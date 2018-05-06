@@ -1,0 +1,15 @@
+{
+  "name": "si",
+  "version": "1.0.0",
+  "description": "Algorytm genetyczny rozwiązujący QAP",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "Krystian Boruciński",
+  "license": "ISC",
+  "dependencies": {
+    "mathjs": "^4.0.0",
+    "plotly": "^1.0.6"
+  }
+}
