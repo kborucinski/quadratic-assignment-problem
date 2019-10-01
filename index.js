@@ -52,7 +52,7 @@ const fitnessScore = (population, distanceMatrix, flowsMatrix) => {
   return scoreList;
 };
 
-function normalize() {
+const normalize = () => {
   let sum = 0,
     normalized = Object.assign([], this);
   normalized.forEach(elem => {
