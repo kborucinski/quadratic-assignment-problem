@@ -4,12 +4,13 @@
   "description": "Algorytm genetyczny rozwiązujący QAP",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "start": "node .",
+    "update": "ncu -u --packageFile ./package.json --packageFileDir",
+    "update:check": "ncu --packageFile ./package.json --packageFileDir"
   },
   "author": "Krystian Boruciński",
   "license": "ISC",
   "dependencies": {
-    "mathjs": "^4.0.0",
-    "plotly": "^1.0.6"
+    "mathjs": "6.2.2"
   }
 }
