@@ -1,6 +1,6 @@
-const math = require("mathjs");
-const chromosomeSize = 18;
-const distanceMatrix = math.matrix([
+export const chromosomeSize = 18;
+
+export const distances = [
   [0, 1, 2, 2, 3, 4, 4, 5, 3, 5, 6, 7, 8, 9, 7, 8, 4, 5],
   [1, 0, 1, 1, 2, 3, 3, 4, 2, 4, 5, 6, 7, 8, 6, 7, 3, 4],
   [2, 1, 0, 2, 1, 2, 2, 3, 1, 3, 4, 5, 6, 7, 5, 6, 2, 3],
@@ -19,8 +19,9 @@ const distanceMatrix = math.matrix([
   [8, 7, 6, 6, 5, 4, 4, 3, 7, 3, 2, 3, 2, 1, 1, 0, 8, 9],
   [4, 3, 2, 4, 3, 4, 4, 5, 1, 5, 6, 7, 8, 9, 7, 8, 0, 1],
   [5, 4, 3, 5, 4, 5, 5, 6, 2, 6, 7, 8, 9, 10, 8, 9, 1, 0]
-]);
-const flowsMatrix = math.matrix([
+];
+
+export const flows = [
   [0, 3, 4, 6, 8, 5, 6, 6, 5, 1, 4, 6, 1, 5, 4, 5, 6, 8],
   [3, 0, 6, 3, 7, 9, 9, 2, 2, 7, 4, 7, 9, 6, 3, 2, 6, 6],
   [4, 6, 0, 2, 6, 4, 4, 4, 2, 6, 3, 6, 5, 6, 2, 6, 5, 7],
@@ -39,5 +40,4 @@ const flowsMatrix = math.matrix([
   [5, 2, 6, 8, 3, 4, 6, 4, 5, 5, 8, 5, 4, 3, 8, 0, 6, 8],
   [6, 6, 5, 3, 4, 3, 7, 4, 4, 6, 5, 4, 5, 2, 5, 6, 0, 3],
   [8, 6, 7, 2, 4, 3, 6, 4, 7, 10, 3, 6, 2, 4, 6, 8, 3, 0]
-]);
-module.exports = { chromosomeSize, distanceMatrix, flowsMatrix };
+];

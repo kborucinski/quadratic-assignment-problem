@@ -1,0 +1,56 @@
+{
+    "env": {
+        "node": true,
+        "jest/globals": true
+      },
+    "parserOptions": { "ecmaVersion": 2020, "sourceType": "module" },
+    "extends": ["eslint:recommended", "plugin:jest/recommended"],
+    "plugins": ["import", "jest"],
+    "rules": {
+      "arrow-parens": ["error", "as-needed"],
+      "no-sparse-arrays": 0,
+      "no-unused-vars": 0,
+      "padding-line-between-statements": [
+        "error",
+        { "blankLine": "always", "prev": "*", "next": "export" },
+        {
+          "blankLine": "always",
+          "prev": ["const", "let", "var"],
+          "next": "block-like"
+        },
+        {
+          "blankLine": "always",
+          "next": ["const", "let", "var", "multiline-expression", "expression"],
+          "prev": "import"
+        },
+        { "blankLine": "always", "prev": "block-like", "next": "*" },
+        { "blankLine": "always", "prev": "import", "next": "export" },
+        {
+          "blankLine": "always",
+          "prev": "export",
+          "next": ["const", "let", "var", "multiline-expression", "expression"]
+        },
+        {
+          "blankLine": "always",
+          "next": ["multiline-const", "multiline-let", "multiline-var"],
+          "prev": "*"
+        },
+        {
+          "blankLine": "always",
+          "prev": "*",
+          "next": "return"
+        },
+        {
+          "blankLine": "always",
+          "prev": ["multiline-const", "multiline-let", "multiline-var"],
+          "next": "*"
+        }
+      ],
+      "jest/no-disabled-tests": "warn",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/prefer-to-have-length": "warn",
+      "jest/valid-expect": "error"
+    }
+  }
+
