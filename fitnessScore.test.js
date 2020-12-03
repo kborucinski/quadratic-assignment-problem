@@ -1,12 +1,12 @@
-import fitnessScore from "./fitnessScore";
-import * as had4 from "./data/had4";
-import * as had9 from "./data/had9";
-import * as had8 from "./data/had8";
-import * as had7 from "./data/had7";
-import * as had6 from "./data/had6";
-import * as had5 from "./data/had5";
+import fitnessScore from './fitnessScore';
+import * as had4 from './data/had4';
+import * as had9 from './data/had9';
+import * as had8 from './data/had8';
+import * as had7 from './data/had7';
+import * as had6 from './data/had6';
+import * as had5 from './data/had5';
 
-test("fitnessScores", () => {
+test('fitnessScores', () => {
   expect(fitnessScore(had4.distances, had4.flows)([2, 3, 0, 1])).toEqual(395);
   expect(fitnessScore(had5.distances, had5.flows)([2, 3, 4, 1, 0])).toEqual(
     314

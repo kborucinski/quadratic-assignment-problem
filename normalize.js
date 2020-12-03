@@ -1,4 +1,4 @@
-import { sum } from "@sandstreamdev/std/array";
+import { sum } from '@sandstreamdev/std/array';
 
 const normalize = fitnessScores => {
   const sumOfScores = sum(fitnessScores);

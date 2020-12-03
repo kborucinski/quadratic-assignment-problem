@@ -1,6 +1,6 @@
-import generateChromosome from "./generateChromosome";
+import generateChromosome from './generateChromosome';
 
-test("generateChromosome", () => {
+test('generateChromosome', () => {
   let i = 0;
 
   const random = () =>

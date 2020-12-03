@@ -1,5 +1,5 @@
-import mutate from "./mutate";
+import mutate from './mutate';
 
-test("mutate", () => {
+test('mutate', () => {
   expect(mutate([])(0)).toEqual([]);
 });

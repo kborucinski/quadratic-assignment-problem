@@ -1,10 +1,9 @@
-import { partition, range } from "@sandstreamdev/std/array";
-import crossChromosomes from "./crossChromosomes";
+import { flatten, partition } from '@sandstreamdev/std/array';
+import cross from './cross';
+import pair from './pair';
+import unpair from './unpair';
 
 const even = x => x % 2 === 0;
-
-const pair = population =>
-  range(population.length).map(index => population.slice(index, index + 2));
 
 export default ([...population]) => probability => {
   const [others, candidates] = partition(() => probability > Math.random())(
@@ -15,13 +14,14 @@ export default ([...population]) => probability => {
     candidates.push(others.pop());
   }
 
-  const chromosomes = pair(candidates);
-
-  console.log({ chromosomes, others });
+  const pairs = pair(candidates);
 
   const [chromosome] = population;
 
-  const point = Math.floor(Math.random() * chromosome.length - 1) + 1;
+  const point = Math.floor(Math.random() * chromosome.length);
 
-  return [...others, ...chromosomes.map(crossChromosomes(point))];
+  return [
+    ...others,
+    ...unpair(pairs.map(([xs, ys]) => cross(point)([...xs], [...ys])))
+  ];
 };
