@@ -1,29 +1,27 @@
-import crossover from "./chromosomesCrossover.js";
-import shuffle from "./shuffle.js";
+import { partition, range } from "@sandstreamdev/std/array";
+import crossChromosomes from "./crossChromosomes";
 
-export default population => probability => {
-  const candidates = [];
-  const species = [];
+const even = x => x % 2 === 0;
 
-  for (let chromosome of population) {
-    const list = probability >= Math.random() ? candidates : species;
+const pair = population =>
+  range(population.length).map(index => population.slice(index, index + 2));
 
-    list.push(chromosome);
+export default ([...population]) => probability => {
+  const [others, candidates] = partition(() => probability > Math.random())(
+    population
+  );
+
+  if (!even(candidates.length)) {
+    candidates.push(others.pop());
   }
 
-  const even = candidates.length % 2 === 0;
+  const chromosomes = pair(candidates);
 
-  if (!even) {
-    const [chromosome] = shuffle(population);
+  console.log({ chromosomes, others });
 
-    candidates.push(chromosome);
-  }
+  const [chromosome] = population;
 
-  const amountOfCandidates = candidates.length;
+  const point = Math.floor(Math.random() * chromosome.length - 1) + 1;
 
-  for (let i = 0; i < amountOfCandidates - 1; i++) {
-    species.push(...crossover(candidates[i], candidates[i + 1]));
-  }
-
-  return species;
+  return [...others, ...chromosomes.map(crossChromosomes(point))];
 };

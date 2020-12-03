@@ -1,35 +1,37 @@
-import fitnessScores from "./fitnessScores.js";
-import generateRandomPopulation from "./generateRandomPopulation.js";
-import normalize from "./normalize.js";
-import tournamentSelection from "./tournamentSelection.js";
-import crossover from "./crossover.js";
-import mutationPopulation from "./mutationPopulation.js";
+import calculateFitnessScores from "./fitnessScores";
+import generatePopulation from "./generatePopulation";
+import tournament from "./tournament";
+import crossover from "./crossover";
+import mutate from "./mutate";
 
-import { chromosomeSize, distances, flows } from "./data/had4.js";
+import { chromosomeSize, distances, flows } from "./data/had4";
 
 const crossoverProbability = 0.8;
 const mutationProbability = 0.008;
 const populationSize = 10;
 
-let population = generateRandomPopulation(chromosomeSize, populationSize);
+console.log("Hello World!");
 
-for (let i = 0; i < 1000; i++) {
-  const scores = fitnessScores(distances, flows)(population);
+let population = generatePopulation(chromosomeSize, populationSize);
 
-  const parents = tournamentSelection(scores)(population);
+console.log(population);
+
+const selection = method => (scores, population) => method(scores, population);
+
+for (let i = 0; i < 10; i++) {
+  const fitnessScores = calculateFitnessScores(distances, flows)(population);
+
+  const parents = selection(tournament)(fitnessScores, population);
 
   const children = crossover(parents)(crossoverProbability);
 
-  const newPopulation = mutationPopulation(children)(mutationProbability);
-
-  console.log({ scores });
-  const maxChromosome = population[scores.indexOf(Math.max(...scores))];
+  console.log({ fitnessScores });
+  const maxFitnessScore = Math.max(...fitnessScores);
+  const maxChromosome = population[fitnessScores.indexOf(maxFitnessScore)];
 
   console.log(
-    `Epoch: ${i} | Max fitness score: ${Math.max(
-      ...scores
-    )} | Max chromosome: ${maxChromosome}`
+    `Epoch: ${i} | Max fitness score: ${maxFitnessScore} | Max chromosome: ${maxChromosome}`
   );
 
-  population = newPopulation;
+  population = mutate(children)(mutationProbability);
 }

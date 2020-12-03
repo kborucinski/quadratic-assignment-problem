@@ -1,4 +1,4 @@
-const sum = xs => xs.reduce((a, b) => a + b, 0);
+import { sum } from "@sandstreamdev/std/array";
 
 const normalize = fitnessScores => {
   const sumOfScores = sum(fitnessScores);
