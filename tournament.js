@@ -7,6 +7,6 @@ export default (random = Math.random) => (scores, population) => {
     const i = Math.floor(random() * populationSize);
     const j = Math.floor(random() * populationSize);
 
-    return scores[i] < scores[j] ? population[i] : population[j];
+    return scores[i] > scores[j] ? population[i] : population[j];
   });
 };

@@ -1,6 +1,7 @@
 import fitnessScore from './fitnessScore';
+import normalize from './normalize';
 
 const fitnessScores = (distances, flows) => chromosomes =>
-  chromosomes.map(fitnessScore(distances, flows));
+  normalize(chromosomes.map(fitnessScore(distances, flows)));
 
 export default fitnessScores;
