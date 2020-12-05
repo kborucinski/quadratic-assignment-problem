@@ -4,32 +4,40 @@ import tournament from './tournament';
 import crossover from './crossover';
 import mutation from './mutation';
 
-import { chromosomeSize, distances, flows } from './data/had4';
+import had8 from './data/had8';
 
-const CROSSOVER_PROBABILITY = 0.8;
+const CROSSOVER_PROBABILITY = 0.3;
 const MUTATION_PROBABILITY = 0.008;
-const POPULATION_SIZE = 100;
-
-let population = generatePopulation(chromosomeSize, POPULATION_SIZE);
+const POPULATION_SIZE = 1000;
 
 const selection = method => (scores, population) =>
   method()(scores, population);
 
-for (let i = 0; i < 10; i++) {
-  const scores = calculateFitnessScores(distances, flows)(population);
+const run = ({ CHROMOSOME_SIZE, DISTANCES, FLOWS }) => {
+  let population = generatePopulation(CHROMOSOME_SIZE, POPULATION_SIZE);
+  let result;
 
-  const parents = selection(tournament)(scores, population);
+  for (let i = 0; i < 1000; i++) {
+    const scores = calculateFitnessScores(DISTANCES, FLOWS)(population);
 
-  const children = crossover(parents)(CROSSOVER_PROBABILITY);
+    const parents = selection(tournament)(scores, population);
 
-  const maxFitnessScore = Math.max(...scores);
-  const maxChromosome = population[scores.indexOf(maxFitnessScore)];
+    const children = crossover(parents)(CROSSOVER_PROBABILITY);
 
-  population = mutation(children)(MUTATION_PROBABILITY);
+    const maxScore = Math.max(...scores);
 
-  console.log(
-    `Epoch: ${
-      i + 1
-    } | Max fitness score: ${maxFitnessScore} | Max chromosome: ${maxChromosome}`
-  );
-}
+    result = population[scores.indexOf(maxScore)];
+
+    console.log(
+      `Epoch: ${i + 1} | Max fitness score: ${maxScore} | Result: ${result}`
+    );
+
+    population = mutation(children)(MUTATION_PROBABILITY);
+  }
+
+  return result;
+};
+
+run(had8);
+
+export default run;

@@ -1,6 +1,6 @@
-export const chromosomeSize = 7;
+export const CHROMOSOME_SIZE = 7;
 
-export const distances = [
+export const DISTANCES = [
   [0, 35, 71, 99, 71, 75, 41],
   [35, 0, 42, 80, 65, 82, 47],
   [71, 42, 0, 45, 49, 79, 55],
@@ -10,7 +10,7 @@ export const distances = [
   [41, 47, 55, 65, 32, 36, 0]
 ];
 
-export const flows = [
+export const FLOWS = [
   [0, 2, 0, 0, 0, 0, 2],
   [2, 0, 3, 0, 0, 1, 0],
   [0, 3, 0, 0, 0, 1, 0],
@@ -19,3 +19,5 @@ export const flows = [
   [0, 1, 1, 0, 0, 0, 0],
   [2, 0, 0, 1, 0, 0, 0]
 ];
+
+export default { CHROMOSOME_SIZE, DISTANCES, FLOWS };
