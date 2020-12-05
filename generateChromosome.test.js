@@ -12,5 +12,5 @@ test('generateChromosome', () => {
       0.32165320593537117
     ][i++];
 
-  expect(generateChromosome(5, random)).toEqual([2, 4, 3, 1, 0]);
+  expect(generateChromosome(random)(5)).toEqual([2, 4, 3, 1, 0]);
 });
