@@ -1,11 +1,19 @@
-import { partition, range } from '@sandstreamdev/std/array';
-import pair from './pair';
-import unpair from './unpair';
+import { flatten, partition, range } from '@sandstreamdev/std/array';
 
 export const even = x => x % 2 === 0;
 
 export const select = (probability, random = Math.random) => population =>
   partition(() => probability > random())(population);
+
+export const pair = population => {
+  const [xs, ys] = population.reduce(
+    ([xs, ys], current, index) =>
+      even(index) ? [[...xs, current], ys] : [xs, [...ys, current]],
+    [[], []]
+  );
+
+  return xs.map((x, index) => [x, ys[index]]);
+};
 
 export const cross = (random = Math.random) => ([[...xs], [...ys]]) => {
   const chromosomeSize = xs.length;
@@ -33,7 +41,7 @@ const crossover = population => (probability, random = Math.random) => {
     candidates.push(others.pop());
   }
 
-  return [...others, ...unpair(pair(candidates).map(cross(random)))];
+  return [...others, ...flatten(pair(candidates).map(cross(random)))];
 };
 
 export default crossover;

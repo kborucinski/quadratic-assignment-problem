@@ -1,5 +1,8 @@
-import { range } from '@sandstreamdev/std/array';
-import generateChromosome from './generateChromosome';
+import { range, shuffle } from '@sandstreamdev/std/array';
 
-export default (chromosomeSize, populationSize) =>
-  range(populationSize).map(generateChromosome(chromosomeSize));
+const generatePopulation = (random = Math.random) => (
+  chromosomeSize,
+  populationSize
+) => range(populationSize).map(_ => shuffle(range(chromosomeSize), random));
+
+export default generatePopulation;

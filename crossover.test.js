@@ -1,4 +1,4 @@
-import crossover, { cross, even, select } from './crossover';
+import crossover, { cross, even, pair, select } from './crossover';
 
 test('even', () => {
   expect(even(2)).toBe(true);
@@ -33,6 +33,32 @@ test('select', () => {
     [
       [0, 1, 2, 3],
       [1, 3, 2, 0]
+    ]
+  ]);
+});
+
+test('pair', () => {
+  expect(pair([1, 2, 3, 4, 5, 6])).toEqual([
+    [1, 2],
+    [3, 4],
+    [5, 6]
+  ]);
+
+  expect(
+    pair([
+      [1, 2],
+      [3, 4],
+      [5, 6],
+      [7, 8]
+    ])
+  ).toEqual([
+    [
+      [1, 2],
+      [3, 4]
+    ],
+    [
+      [5, 6],
+      [7, 8]
     ]
   ]);
 });

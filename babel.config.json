@@ -1,12 +1,4 @@
 {
-  "plugins": [
-    [
-      "module-resolver",
-      {
-        "root": ["./"]
-      }
-    ]
-  ],
   "presets": ["@babel/preset-env"],
   "env": {
     "test": {
