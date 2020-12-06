@@ -24,7 +24,7 @@ test('tournament', () => {
       0.410561498441528
     ][i++];
 
-  expect(tournament(random)(scores, population)).toEqual([
+  expect(tournament(scores, population, random)).toEqual([
     [1, 3, 2, 0],
     [2, 1, 0, 3],
     [2, 1, 3, 0],

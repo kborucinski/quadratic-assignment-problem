@@ -10,16 +10,15 @@ const CROSSOVER_PROBABILITY = 0.8;
 const MUTATION_PROBABILITY = 0.008;
 const POPULATION_SIZE = 100;
 
-const selection = method => (scores, population) =>
-  method()(scores, population);
+const selection = method => (scores, population) => method(scores, population);
 
-const run = ({ CHROMOSOME_SIZE, DISTANCES, FLOWS }) => selectionMethod => {
-  let population = generatePopulation()(CHROMOSOME_SIZE, POPULATION_SIZE);
+const run = ({ CHROMOSOME_SIZE, DISTANCES, FLOWS }) => method => {
+  let population = generatePopulation(CHROMOSOME_SIZE, POPULATION_SIZE);
 
   for (let i = 0; i < 100; i++) {
     const scores = fitnessScores(DISTANCES, FLOWS)(population);
 
-    const parents = selection(selectionMethod)(scores, population);
+    const parents = selection(method)(scores, population);
 
     const children = crossover(parents)(CROSSOVER_PROBABILITY);
 

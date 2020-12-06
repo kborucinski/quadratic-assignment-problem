@@ -1,6 +1,6 @@
 import { range } from '@sandstreamdev/std/array';
 
-const tournament = (random = Math.random) => (scores, population) => {
+const tournament = (scores, population, random = Math.random) => {
   const populationSize = population.length;
 
   return range(populationSize).map(() => {

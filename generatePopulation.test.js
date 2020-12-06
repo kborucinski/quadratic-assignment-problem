@@ -25,7 +25,7 @@ test('generatePopulation', () => {
       0.32165320593537117
     ][i++];
 
-  expect(generatePopulation(random)(CHROMOSOME_SIZE, POPULATION_SIZE)).toEqual([
+  expect(generatePopulation(CHROMOSOME_SIZE, POPULATION_SIZE, random)).toEqual([
     [2, 4, 3, 1, 0],
     [2, 4, 3, 1, 0],
     [2, 4, 3, 1, 0]
