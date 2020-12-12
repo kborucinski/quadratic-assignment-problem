@@ -1,6 +1,6 @@
 export const mutate = ([...chromosome]) => (i, random = Math.random) => {
   const chromosomeSize = chromosome.length;
-  const j = Math.floor(random() * chromosomeSize);
+  const j = Math.floor(random() * (chromosomeSize - 1));
 
   const gene = chromosome[i];
   chromosome[i] = chromosome[j];
@@ -15,7 +15,7 @@ const mutation = population => (probability, random = Math.random) => {
   for (let chromosome of population) {
     for (let index = 0; index < chromosome.length; index++) {
       if (random() < probability) {
-        mutate(chromosome)(index);
+        chromosome = mutate(chromosome)(index, random);
       }
     }
 
