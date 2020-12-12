@@ -1,13 +1,13 @@
 import roulette from './roulette';
 
 test('roulette', () => {
-  const population = [1, 2, 3, 4, 5];
+  const population = [2, 1, 3, 5, 4];
 
-  const scores = [28, 18, 14, 9, 26];
+  const fitnessScores = [7.5, 15, 5, 3, 3.75];
 
   let i = 0;
 
-  const random = () => [0.9, 0.18, 0.5, 0.18, 0.5][i++];
+  const random = () => [0.284, 0.848, 0.004, 0.781, 0.429][i++];
 
-  expect(roulette(scores, population, random)).toEqual([5, 1, 3, 1, 3]);
+  expect(roulette(fitnessScores, population, random)).toEqual([1, 5, 2, 3, 1]);
 });
