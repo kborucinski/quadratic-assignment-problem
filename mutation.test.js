@@ -21,7 +21,6 @@ test('mutation', () => {
   const probability = 0.7;
 
   let i = 0;
-  // //0.63722317939877775,
 
   const random = () =>
     [
