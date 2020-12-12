@@ -38,7 +38,7 @@ const crossover = population => (probability, random = Math.random) => {
   const [others, candidates] = select(probability, random)(population);
 
   if (!even(candidates.length)) {
-    candidates.push(others.pop());
+    others.push(candidates.pop());
   }
 
   return [...others, ...flatten(pair(candidates).map(cross(random)))];
