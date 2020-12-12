@@ -31,7 +31,8 @@
     "prettier": "2.2.1"
   },
   "dependencies": {
-    "@sandstreamdev/std": "0.13.2"
+    "@sandstreamdev/std": "0.13.2",
+    "plotly": "1.0.6"
   },
   "jest": {
     "moduleDirectories": [
