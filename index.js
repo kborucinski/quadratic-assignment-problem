@@ -53,7 +53,7 @@ const run = ({ CHROMOSOME_SIZE, DISTANCES, FLOWS }) => method => {
     population = mutation(children)(MUTATION_PROBABILITY);
   }
 
-  plotlyAccount.plot([data], GRAPH_OPTIONS);
+  // plotlyAccount.plot([data], GRAPH_OPTIONS);
 };
 
 //run(had20)(tournament);
